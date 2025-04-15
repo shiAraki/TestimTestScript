@@ -29,7 +29,7 @@ async function sendSpecialCharacter(page, selector, key) {
 // shared steps \\
 async function 画面に表示されている最大金額が$1_500以下であることを確認() {
   await page.evaluate(() => {
-    let maxValue = Math.max(...Array.from(document.querySelectorAll('.GalleryItem__price-tag___3q0Al'), el => Number(el.innerText.replace(/[^\-0-9.]+/g, ''))));
+    const maxValue = Math.max(...Array.from(document.querySelectorAll('.GalleryItem__price-tag___3q0Al'), el => Number(el.innerText.replace(/[^\-0-9.]+/g, ''))));
     
     if(maxValue >= 1500) {
       throw new Error('Maximum value should be less than $1500! Actual value: ' + maxValue);
